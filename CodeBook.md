@@ -1,17 +1,20 @@
 #CodeBook
 
+## 1) Data source
+
 Data was provided as part of the assignment
-[Link here]: https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
+https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
 
 
-##tidydata
 
-An object named tidydata was constructed with following columns
+## 2) Tidydata
+
+An object named tidydata was constructed with following columns. 
 
 | Column | Original Variable |
 |------------------------|-------------------------------------------------------------|
-|Subject | |
-|Activity | |
+|Subject | Subject |
+|Activity | Activity name (factored from activity_labels.txt) |
 |Time.Body.Accelerometer.Mean.X | tBodyAcc-mean()-X |
 |Time.Body.Accelerometer.Mean.Y | tBodyAcc-mean()-Y |
 |Time.Body.Accelerometer.Mean.Z | tBodyAcc-mean()-Z |
@@ -79,9 +82,17 @@ An object named tidydata was constructed with following columns
 |Frequency.Body.AngularVelocity.Magnitude.Mean | fBodyBodyGyroJerkMag-mean() |
 |Frequency.Body.AngularVelocity.Magnitude.StandardDeviation | fBodyBodyGyroJerkMag-std() |
 
+### 2a) Work and transformations
+
+Data was subseted to list only standard deviation and mean.
+Labels of the variables were changed to more descriptive.
+Activities Ids were replaced with descriptive activity names
+
 It was exported to tidy.txt file.
 
-#tidymeans
+
+
+## 3) Tidymeans
 
 Tidymeans is data.table that is based on tidymeans to calculate mean value of the variable per subject/activity.
 
@@ -92,9 +103,34 @@ Tidymeans is data.table that is based on tidymeans to calculate mean value of th
 |Variable | Name of the variable in tidy dataset | character |
 |Value | Mean value for combination of this variable/subject/activity | numeric |
 
+### 3a) Work and transformations
+Data from tidydata was melted with mean function
+
 It was exportd as tidymeans.txt
 
+### 3b) Additional note
 As there is ongoing discussion on format for the last assignment the same data was exported as means_not_tidy.txt file. 
 This file contains not tidy but easier to read layout of data. Also this format is preferred by some reviewers.
 
 
+
+## 4) Version
+
+All above were performed using following environment:
+
+```
+platform       x86_64-w64-mingw32          
+arch           x86_64                      
+os             mingw32                     
+system         x86_64, mingw32             
+status                                     
+major          3                           
+minor          3.1                         
+year           2016                        
+month          06                          
+day            21                          
+svn rev        70800                       
+language       R                           
+version.string R version 3.3.1 (2016-06-21)
+nickname       Bug in Your Hair            
+```
